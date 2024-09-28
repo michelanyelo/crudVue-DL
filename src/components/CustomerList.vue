@@ -19,12 +19,12 @@ const openModal = () => {
 const handleAddCustomer = async (customer) => {
     const { nombre, correo } = customer
 
-    customersStore.addCustomer(nombre, correo)
+    await customersStore.addCustomer(nombre, correo)
 
     showModal.value = false
 }
 
-// Funcion para elimianr cliente de Firebase
+// Funcion para eliminar cliente de Firebase
 const deleteCustomer = (id) => {
     customersStore.deleteCustomer(id)
 }
@@ -42,9 +42,10 @@ const deleteCustomer = (id) => {
         </nav>
     </div>
 
-    <div class="container">
+    <div class="container mt-5">
+        <h1 class="crud-titulo fw-bold">CRUD Clientes</h1>
         <!-- Botón para agregar un nuevo cliente -->
-        <div class="d-flex justify-content-start mt-5">
+        <div class="d-flex justify-content-start mt-3">
             <button type="button" class="btn btn-primary" @click="openModal">
                 Agregar Cliente
             </button>
@@ -81,6 +82,7 @@ const deleteCustomer = (id) => {
 .btn-primary {
     background-color: #526DFE;
     border-color: #526DFE;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -91,10 +93,20 @@ const deleteCustomer = (id) => {
 .btn-danger {
     background-color: #D54E69;
     border-color: #D54E69;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-danger:hover {
     background-color: #be3354;
     border-color: #be3354;
+}
+
+.crud-titulo {
+    color: #526DFE;
+    text-shadow: 2px 2px 4px #0000005d;
+}
+
+.table td {
+    padding: 15px;
 }
 </style>
